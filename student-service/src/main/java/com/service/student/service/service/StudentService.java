@@ -1,7 +1,7 @@
 package com.service.student.service.service;
 
-import com.service.student.service.dto.StudentDto;
-import com.service.student.service.entity.Student;
+import com.service.student.service.domain.dto.StudentDto;
+import com.service.student.service.domain.entity.Student;
 
 import java.util.List;
 

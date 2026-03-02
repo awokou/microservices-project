@@ -2,26 +2,25 @@ package com.service.school.service.service.impl;
 
 import com.server.common.lib.dto.StudentDto;
 import com.service.school.service.client.StudentClient;
-import com.service.school.service.dto.SchoolDto;
-import com.service.school.service.dto.SchoolResponse;
-import com.service.school.service.entity.School;
+import com.service.school.service.domain.dto.SchoolDto;
+import com.service.school.service.domain.dto.SchoolResponse;
+import com.service.school.service.domain.entity.School;
 import com.service.school.service.repository.SchoolRepository;
 import com.service.school.service.service.SchoolService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class SchoolServiceImpl implements SchoolService {
 
     private final SchoolRepository schoolRepository;
     private final StudentClient studentClient;
-
-    public SchoolServiceImpl(SchoolRepository schoolRepository, StudentClient studentClient) {
-        this.schoolRepository = schoolRepository;
-        this.studentClient = studentClient;
-    }
 
     @Override
     public School saveSchool(SchoolDto school) {

@@ -1,11 +1,12 @@
 package com.service.student.service.service.impl;
 
-import com.service.student.service.dto.StudentDto;
-import com.service.student.service.entity.Student;
-import com.service.student.service.mapper.StudentMapper;
+import com.service.student.service.domain.dto.StudentDto;
+import com.service.student.service.domain.entity.Student;
+import com.service.student.service.domain.mapper.StudentMapper;
 import com.service.student.service.repository.StudentRepository;
 import com.service.student.service.service.StudentService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Service;
@@ -14,15 +15,11 @@ import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
-
-    public StudentServiceImpl(StudentRepository studentRepository, StudentMapper studentMapper) {
-        this.studentRepository = studentRepository;
-        this.studentMapper = studentMapper;
-    }
 
     @Override
     public Student saveStudent(StudentDto student) {
@@ -47,12 +44,7 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentDto> findAllStudents() {
         return studentRepository.findAll()
                 .stream()
-                .map(student -> new StudentDto(
-                        student.getId(),
-                        student.getFirstName(),
-                        student.getLastName(),
-                        student.getEmail(),
-                        student.getSchoolId()))
+                .map(studentMapper::toDto)
                 .toList();
     }
 
@@ -60,12 +52,7 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentDto> findAllStudentsBySchool(Integer schoolId) {
         return studentRepository.findAllBySchoolId(schoolId)
                 .stream()
-                .map(student -> new StudentDto(
-                        student.getId(),
-                        student.getFirstName(),
-                        student.getLastName(),
-                        student.getEmail(),
-                        student.getSchoolId()))
+                .map(studentMapper::toDto)
                 .toList();
     }
 

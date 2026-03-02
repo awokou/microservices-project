@@ -1,22 +1,22 @@
 package com.service.student.service.controller;
 
-import com.service.student.service.dto.StudentDto;
-import com.service.student.service.entity.Student;
+import com.service.student.service.domain.dto.StudentDto;
+import com.service.student.service.domain.entity.Student;
 import com.service.student.service.service.StudentService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/students")
 public class StudentController {
 
     private final StudentService studentService;
-
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
 
     @PostMapping
     public ResponseEntity<Student> save(@RequestBody StudentDto student) {

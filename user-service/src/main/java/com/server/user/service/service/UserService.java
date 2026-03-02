@@ -5,21 +5,19 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.server.user.service.dto.UserRequest;
-import com.server.user.service.dto.UserResponse;
-import com.server.user.service.entity.User;
+import com.server.user.service.domain.dto.UserRequest;
+import com.server.user.service.domain.dto.UserResponse;
+import com.server.user.service.domain.entity.User;
 import com.server.user.service.repository.UserRepository;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     public List<UserResponse> getAllUsers() {
         List<User> users = userRepository.findAll();
@@ -73,5 +71,4 @@ public class UserService {
                 user.getName(),
                 user.getEmail());
     }
-
 }

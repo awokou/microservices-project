@@ -1,4 +1,4 @@
-# Spring Microservices V2
+# Spring Microservices architecture
 
 This repository contains a demo project showcasing a microservices-based application, designed to provide a hands-on understanding of microservices architecture and implementation. The project consists of an API Gateway, Config Server, Discovery Server, and two microservices: Student and School.
 
@@ -58,8 +58,6 @@ The Student Microservice is responsible for managing student-related data and op
 ### School Microservice
 
 The School Microservice manages school-related data and operations, including adding, updating, and retrieving school records.
-
-### User Microservice
 
 ## Inter-Service Communication
 
